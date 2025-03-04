@@ -4,7 +4,7 @@ from modules.generate_password import generate_strong_password
 import hashlib
 from datetime import datetime
 
-st.set_page_config(page_title="Password Strength Meter", page_icon="🔐")
+st.set_page_config(page_title="PassGuard: Password Strength Meter", page_icon="🔐")
 
 # Inject custom CSS
 st.markdown("""
@@ -76,11 +76,11 @@ st.markdown("""
 
 # Heading and description
 st.markdown(
-    "<h1 style='text-align: center;'>🔐 Password Strength Meter</h1>",
+    "<h1 style='text-align: center;'>🔐 PassGuard: Password Strength Meter</h1>",
     unsafe_allow_html=True
     )
 st.markdown(
-    "<p style='text-align: center;'>Check Your Password Strength and improve its quality.</p>",
+    "<p style='text-align: center;'>A sleek, secure tool to evaluate password strength, generate strong passwords.</p>",
     unsafe_allow_html=True
     )
 password = st.text_input("Enter your password", type="default")

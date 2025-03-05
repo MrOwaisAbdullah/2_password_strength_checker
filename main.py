@@ -112,7 +112,7 @@ if st.button("Check Password"):
                 ''', unsafe_allow_html=True)
 
                 # Add hashed password and timestamp to history
-                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
                 st.session_state.password_history.append((hashed_password, timestamp))
 
                 # Limit history to last 10 entries

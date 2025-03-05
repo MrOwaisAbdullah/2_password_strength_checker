@@ -144,6 +144,17 @@ if check_button:
 # Generate Strong Password
 if generate_button:
     new_password = generate_strong_password()
+    hashed_password = hashlib.sha256(new_password.encode()).hexdigest()
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    st.session_state.password_history.append((hashed_password, timestamp))
+    if len(st.session_state.password_history) > 10:
+        st.session_state.password_history.pop(0)
+    progress.progress(100)
+    st.markdown('''
+        <div class="result-container strong">
+        ✅ Your Strong Password Has been Generated Successfully!!!
+        </div>
+        ''', unsafe_allow_html=True)
     st.write("Suggested Password:")
     st.code(new_password)
 

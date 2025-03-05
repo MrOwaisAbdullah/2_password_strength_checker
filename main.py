@@ -88,21 +88,24 @@ password = st.text_input("Enter your password", type="default")
 if 'password_history' not in st.session_state:
     st.session_state.password_history = []
 
+col1, col2 = st.columns(2)
+with col1:
+    check_button = st.button("Check Password")
+with col2:
+    generate_button = st.button("Generate Strong Password")
+
+# Progress bar
 progress = st.progress(0)
 
-if st.button("Check Password"):
-
-    # Hash the input password
+# Check Password logic
+if check_button:
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
-
     if password == "":
-        st.error("Please type your Password to Check.")
+        st.error("Please type your password to check.")
     else:
-        # Check if the password is in the history
         if any(hashed_password == hp for hp, _ in st.session_state.password_history):
             st.error("You cannot reuse a recent password.")
         else:
-            # Check password strength
             strength, feedback, strength_bar = check_password_strength(password)
             if strength == "Strong":
                 st.markdown('''
@@ -110,17 +113,11 @@ if st.button("Check Password"):
                         <strong>Password Strength:</strong> ✅ Strong
                     </div>
                 ''', unsafe_allow_html=True)
-
-                # Add hashed password and timestamp to history
                 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
                 st.session_state.password_history.append((hashed_password, timestamp))
-
-                # Limit history to last 10 entries
                 if len(st.session_state.password_history) > 10:
                     st.session_state.password_history.pop(0)
-
                 progress.progress(strength_bar)
-
             elif strength == "Moderate":
                 st.markdown('''
                     <div class="result-container moderate">
@@ -144,7 +141,8 @@ if st.button("Check Password"):
                     for msg in feedback:
                         st.write(f"- {msg}")
 
-if st.button("Generate Strong Password"):
+# Generate Strong Password
+if generate_button:
     new_password = generate_strong_password()
     st.write("Suggested Password:")
     st.code(new_password)

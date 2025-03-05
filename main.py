@@ -105,9 +105,9 @@ if st.button("Check Password"):
             # Check password strength
             strength, feedback, strength_bar = check_password_strength(password)
             if strength == "Strong":
-                st.markdown(f'''
+                st.markdown('''
                     <div class="result-container strong">
-                        <strong>Password Strength:</strong> ✅ {strength}
+                        <strong>Password Strength:</strong> ✅ Strong
                     </div>
                 ''', unsafe_allow_html=True)
 

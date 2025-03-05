@@ -166,6 +166,7 @@ if st.sidebar.button("Clear Password History"):
     if confirm_clear:
         st.session_state.password_history = []
         st.sidebar.success("Password history cleared!")
+        st.rerun()
     else:
         st.sidebar.warning("Please check the box to confirm.")
 

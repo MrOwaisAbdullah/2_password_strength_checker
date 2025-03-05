@@ -1,6 +1,6 @@
 # PassGuard
 
-**PassGuard** is a sleek, secure Streamlit-based tool designed to evaluate password strength, generate strong passwords, and manage your password history with style.
+**PassGuard** is a sleek, secure Streamlit-based tool designed to evaluate password strength, generate strong passwords.
 
 ## Features
 - **Password Strength Evaluation**: Assesses passwords based on length, character variety, and complexity.
